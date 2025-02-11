@@ -2,14 +2,14 @@ import os
 import subprocess
 import sys
 
-# Forzar la instalación de dependencias si no están presentes
+# Forzar la instalación de dependencias si no están presentes usando --user para evitar problemas de permisos
 def install_missing_packages():
     REQUIRED_LIBRARIES = ["plotly", "pandas", "streamlit", "openpyxl"]
     for lib in REQUIRED_LIBRARIES:
         try:
             __import__(lib)
         except ImportError:
-            subprocess.run([sys.executable, "-m", "pip", "install", lib])
+            subprocess.run([sys.executable, "-m", "pip", "install", "--user", lib])
 
 install_missing_packages()
 
