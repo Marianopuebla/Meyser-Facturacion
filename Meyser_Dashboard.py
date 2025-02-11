@@ -1,3 +1,16 @@
+import os
+import subprocess
+
+def install_missing_packages():
+    REQUIRED_LIBRARIES = ["plotly", "pandas", "streamlit", "openpyxl"]
+    for lib in REQUIRED_LIBRARIES:
+        try:
+            __import__(lib)
+        except ImportError:
+            subprocess.run(["pip", "install", lib])
+
+install_missing_packages()
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
