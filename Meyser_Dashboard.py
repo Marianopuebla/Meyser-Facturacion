@@ -1,18 +1,3 @@
-import os
-import subprocess
-import sys
-
-# Forzar la instalación de dependencias sin --user para evitar problemas con el entorno virtual
-def install_missing_packages():
-    REQUIRED_LIBRARIES = ["plotly", "pandas", "streamlit", "openpyxl"]
-    for lib in REQUIRED_LIBRARIES:
-        try:
-            __import__(lib)
-        except ImportError:
-            subprocess.run([sys.executable, "-m", "pip", "install", lib, "--no-cache-dir"], check=True)
-
-install_missing_packages()
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
